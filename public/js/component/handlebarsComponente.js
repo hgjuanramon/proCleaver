@@ -5,6 +5,7 @@
 var handleBarsComponente = (function() {
 
     function compilar(selector,contexto){
+
         var source   = $(selector).html();
         var template = Handlebars.compile(source);
         if(contexto==undefined){

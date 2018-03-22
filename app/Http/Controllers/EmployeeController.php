@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
-use App\EmployeeSkill;
 use App\Http\Component\Message_Response;
 use App\Skill;
 use Illuminate\Http\Request;
@@ -11,10 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 Class EmployeeController extends Controller  {
 
-    public function index(){
 
-        return "Hola desde el contolador";
-    }
     public function countList(Request $request){
 
         $skills = Employee::where('first_name', 'LIKE',"%".$request['name_filter'].'%')->get();
@@ -34,7 +30,14 @@ Class EmployeeController extends Controller  {
     function getSkills(&$data){
         if(!empty($data)){
             foreach ($data as $key => $value){
-                $skills = Employee::findOrFail($value->id)->skills()->get();
+                //$skills = Employee::findOrFail($value->id)->skills()->get();
+               //$skills = EmployeeSkill::where('employee_id',"=",$value->id)->select("*")
+                //->get();
+                $skills = DB::table('employee_skills')
+                    ->leftJoin('skills', 'employee_skills.skill_id', '=', 'skills.id')
+                    ->select('employee_skills.*','skills.name')
+                    ->where("employee_skills.employee_id",'=',$value->id)
+                    ->get();
                 $data[$key]['skills'] = $skills;
             }
         }

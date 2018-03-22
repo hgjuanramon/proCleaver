@@ -11,7 +11,6 @@ class Message_Response {
    $data['tipoRespuesta']='MENSAJE';  
    $data['tipoMensaje']=$tipoMensaje;
    echo json_encode($data);
-   header('Content-type: application/json');
    exit();
   } 
   static function mensajeDatosAdicionales($mensaje,$datosAdicionales,$tipoMensaje="CORRECTO",$estatus=200){
@@ -22,7 +21,6 @@ class Message_Response {
    $data['tipoMensaje']=$tipoMensaje;
    $data["datosAdicionales"]=$datosAdicionales;
    echo json_encode($data);
-   header('Content-type: application/json');
    exit();
   } 
   
@@ -33,7 +31,6 @@ class Message_Response {
    $data['tipoRespuesta']='MENSAJES';  
    $data['tipoMensaje']=$tipoMensaje;
    echo json_encode($data);
-   header('Content-type: application/json');
    exit();
   }
 
@@ -44,7 +41,6 @@ class Message_Response {
         $data['tipoRespuesta']='MENSAJES';
         $data['tipoMensaje']="ERROR";
         echo json_encode($data);
-        header('Content-type: application/json');
         exit();
     }
 
@@ -55,7 +51,6 @@ class Message_Response {
         $data['tipoRespuesta']='MENSAJE';
         $data['tipoMensaje']='ERROR';
         echo json_encode($data);
-        header('Content-type: application/json');
         exit();
     }
 
@@ -69,7 +64,6 @@ class Message_Response {
 		  "tipoRespuesta"          => "DATOS"
           ];
       echo json_encode($json_data);
-	  //header('Content-type: application/json');
 	  exit();
   }  
 
@@ -77,8 +71,7 @@ class Message_Response {
    $data = array();
    $data['estatus'] = $estatus;
    $data['url']=$url;  
-   $data['tipoRespuesta']='REDIRECCION';  
-   header('Content-type: application/json');
+   $data['tipoRespuesta']='REDIRECCION';
    echo json_encode($data);
    if($estatus==408){
        die();

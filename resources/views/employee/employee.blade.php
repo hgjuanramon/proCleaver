@@ -34,6 +34,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label>Por Nombre</label>
                                                 <input class="form-control" name="filtros[name_filter]">
                                                 <span class="errores" data-error="name_filter"><i class="fa fa-times"></i></span>
                                             </div>
@@ -67,14 +68,18 @@
                 </div>
             </div>
         </div>
+        
         @include('employee/modal')
         <!-- Scripts -->
         {!! Html::script('js/jquery-2.2.0.min.js') !!}
         {!! Html::script('js/bootstrap.min.js') !!}
+        {!! Html::script('js/vendor/handlebars/handlebars.min.js') !!}
         {!! Html::script('js/vendor/datatables-1.10.12/js/datatables.min.js') !!}
         {!! Html::script('js/vendor/lobibox/js/notifications.min.js') !!}
         {!! Html::script('js/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
         {!! Html::script('js/vendor/bootstrap-datepicker/js/datepicker-es.js') !!}
+        {!! Html::script('js/component/dataTableComponente.js') !!}
+        {!! Html::script('js/component/handlebarsComponente.js') !!}
         {!! Html::script('js/component/baseComponente.js') !!}
         <script>
             $(function() {
@@ -84,5 +89,6 @@
         {!! Html::script('js/component/notificacionComponente.js') !!}
         {!! Html::script('js/component/dataTableComponente.js') !!}
         {!! Html::script('js/modules/employee.js') !!}
+
     </body>
 </html>

@@ -11,6 +11,7 @@ use App\Http\Component\Message_Response;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Component\ValidadorUtil;
+use Illuminate\Support\Facades\Blade;
 
 class UseEmployeeController extends Controller {
 
