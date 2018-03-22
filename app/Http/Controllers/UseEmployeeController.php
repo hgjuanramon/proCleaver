@@ -78,6 +78,7 @@ class UseEmployeeController extends Controller {
 
         $client = new Client();
         $data=[];
+        $data['id']=$request['id'];
         $data['first_name']=$request['first_name'];
         $data['last_name']=$request['last_name'];
         $data['email']=$request['email'];
@@ -91,7 +92,7 @@ class UseEmployeeController extends Controller {
         $data["skills"]= $request["skills"];
 
         if($id > 0 ){
-            $res = $client->request("POST","http://codh.heladoobscuro.com.mx/public/api/employee-update/". $id, ['form_params' => $data]);
+            $res = $client->request("POST","http://codh.heladoobscuro.com.mx/public/api/employee-update", ['form_params' => $data]);
             $response = json_decode($res->getBody());
             Message_Response::mensaje("Registro actualizado correctamente");
         }else{

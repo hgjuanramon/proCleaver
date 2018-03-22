@@ -62,10 +62,11 @@ Class EmployeeController extends Controller  {
         return response()->json($res, 200);
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request){
 
         $skills = $request['skills'];
         unset($request['skills']);
+        $id = $request['id'];
 
         $employee = Employee::findOrFail($id);
 
