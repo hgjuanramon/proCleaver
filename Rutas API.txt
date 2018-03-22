@@ -1,0 +1,7 @@
+POST   http://codh.heladoobscuro.com.mx/public/api/employee
+POST   http://codh.heladoobscuro.com.mx/public/api/employee-count
+POST   http://codh.heladoobscuro.com.mx/public/api/employee-create
+POST   http://codh.heladoobscuro.com.mx/public/api/employee-update
+DELETE http://codh.heladoobscuro.com.mx/public/api/employee-delete
+
+GET    http://codh.heladoobscuro.com.mx/public/api/skills
