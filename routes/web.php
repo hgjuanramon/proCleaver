@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/empleados', "UseEmployeeController@index");
+Route::get('/', "UseEmployeeController@index");
 Route::post('/getEmployees', "UseEmployeeController@getAllList");
 Route::post('/employee-save', "UseEmployeeController@save");
 Route::post('/employee-delete', "UseEmployeeController@delete");

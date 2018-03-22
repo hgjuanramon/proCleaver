@@ -39,6 +39,7 @@ $(function () {
     })
 
     var modal = function (title,type,data) {
+        baseComponente.ocultarErrores();
         $("#id").val(0);
         if(type) {
             $("#id").val(data['id'])
