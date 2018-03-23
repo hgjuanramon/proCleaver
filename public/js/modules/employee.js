@@ -86,20 +86,25 @@ $(function () {
 
     $("#tblEmployee").on('click','#btnDel',function () {
         var datos = dt.obtenerSeleccionado(this);
-        var data = {id : datos.id,_token:$("#_token").val()}
+        var mData = {id : datos.id,_token:$("#_token").val()}
 
         if(confirm("¿Desea eliminar el registro?")){
             if(datos.id){
-                $.post("/employee-delete", data, function (data) {
-                    if (data.tipoRespuesta === "MENSAJE" && data.tipoMensaje === "CORRECTO") {
-                        dt.recargar();
-                        notificacionComponente.mostrarCorrecto(data.mensaje);
-                    }
-                    else {
-                        if(data.tipoRespuesta === "MENSAJE" && data.tipoMensaje ==="ERROR"){
-                            notificacionComponente.mostrarError(data.mensaje);
-                        }else{
-                            baseComponente.mostrarMensajes(data.mensajes);
+                $.ajax({
+                    url:"/employee-delete",
+                    dataType:'json',
+                    type:'post',
+                    data: mData,
+                    success:function (data) {
+                        if (data.tipoRespuesta === "MENSAJE" && data.tipoMensaje === "CORRECTO") {
+                            dt.recargar();
+                            notificacionComponente.mostrarCorrecto(data.mensaje);
+                        } else {
+                            if(data.tipoRespuesta === "MENSAJE" && data.tipoMensaje ==="ERROR"){
+                                notificacionComponente.mostrarError(data.mensaje);
+                            }else{
+                                baseComponente.mostrarMensajes(data.mensajes);
+                            }
                         }
                     }
                 });
